@@ -43,11 +43,13 @@ function ControlledTabs(props) {
       id="controlled-tab-example"
       activeKey={key}
       onSelect={k => setKey(k)}
+      style={{ padding: "8px" }}
+      className="bg-secondary"
     >
-      <Tab eventKey="advance" title="Advance">
+      <Tab eventKey="advance" title="Advance" style={{ padding: "8px" }}>
         <BootstrapTable responsive striped bordered={false} hover condensed variant="dark" className="mt-sm-2" bootstrap4 keyField='id' data={products} columns={columns} pagination={paginationFactory()} rowStyle={ rowStyle } />
       </Tab>
-      <Tab eventKey="basic" title="Basic">
+      <Tab eventKey="basic" title="Basic" style={{ padding: "8px" }}>
       <BootstrapTable responsive striped bordered={false} hover condensed variant="dark" className="mt-sm-2"  bootstrap4 keyField='id' data={ products1 } columns={ columns } pagination={ paginationFactory() } rowStyle={ rowStyle } />
       </Tab>
     </Tabs>
@@ -103,6 +105,7 @@ export default class Admin extends React.Component {
   };
 
   handleLogout = () => {
+    localStorage.clear();
     const path = "/";
     this.props.history.push(path);
   }
@@ -114,7 +117,7 @@ export default class Admin extends React.Component {
   render() {
     console.log("data is state", this.state);
     return (
-      <Container fluid>
+      <Container fluid style={{padding:"0"}}>
         <Navbar bg="dark" variant="dark" className="justify-content-sm-between">
           <Navbar.Brand href="#home">
             <img
@@ -130,7 +133,7 @@ export default class Admin extends React.Component {
           </Navbar.Brand>
           <Button variant="outline-light align-" onClick={this.handleLogout}>Logout</Button>
         </Navbar>
-        <Container fluid className="d-flex flex-row justify-content-center">
+        <Container fluid className="d-flex flex-row justify-content-center" >
           <Card
             style={{ width: "50%" }}
             className="m-sm-2 d-flex flex-row  justify-content-around bg-dark text-light"
@@ -148,7 +151,7 @@ export default class Admin extends React.Component {
             </Card.Body>
           </Card>
         </Container>
-        <ControlledTabs data={this.state} />
+        <ControlledTabs data={this.state}  />
       </Container>
     );
   }
