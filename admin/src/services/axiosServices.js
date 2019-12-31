@@ -15,8 +15,8 @@ export default class axiosServices {
 	}
 
 	getMethod(target) {
-		// token = localStorage.getItem("token");
-		token = "XmwhEcTzTdk3LzwMrtg1mM3IHbtvoGSwRqwlCgElbVoG6YRzjkVtzTRJuYrxfIQh";
+		token = localStorage.getItem("token");
+		// token = "XmwhEcTzTdk3LzwMrtg1mM3IHbtvoGSwRqwlCgElbVoG6YRzjkVtzTRJuYrxfIQh";
 
 		return axios.get(address + target, {
 			headers: {
