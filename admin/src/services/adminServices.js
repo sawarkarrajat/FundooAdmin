@@ -3,7 +3,13 @@ const obj = new axiosServices();
 export default class adminServices {
 
   login(data) {
-    return obj.postMethod(data, "/user/login", false);
+    return obj.postMethod(data, "/user/adminLogin", false);
+  }
+  approve(data) {
+    return obj.postMethod(data, "/questionAndAnswerNotes/approve/"+data.id, true);
+  }
+  reject(data) {
+    return obj.postMethod(data, "/questionAndAnswerNotes/reject/"+data.id, true);
   }
 
   getAllUserData() {
@@ -12,5 +18,9 @@ export default class adminServices {
 
   getAllStatics() {
     return obj.getMethod("/user/UserStatics", true);
+  }
+
+  getUnApproved() {
+    return obj.getMethod("/questionAndAnswerNotes/getUnApprovedAnswer", true);
   }
 }

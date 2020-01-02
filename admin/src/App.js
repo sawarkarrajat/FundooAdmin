@@ -1,19 +1,24 @@
 import React from "react";
+import Container from "react-bootstrap/Container";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./components/Login";
 import Admin from "./components/Admin";
+import Dashboard from "./components/Dashboard";
+import Unapproved from "./components/Unapproved";
 function App() {
-  return (
-    <div>
-      <BrowserRouter> 
-        <Route path="/" exact component={Login}></Route>
-        <Route path="/admin" component={Admin}></Route>
-        {/* <Route path="/dashboard/" component={}></Route> */}
-      </BrowserRouter>
-    </div>
-  );
+	return (
+		<Container fluid style={{ padding: "0" }} className="d-flex flex-column justify-content-center">
+			<BrowserRouter>
+				<Route path="/" exact component={Login} />
+				<Route path="/admin" component={Admin} />
+				<Route path="/admin/dashboard/" component={Dashboard} />
+				<Route path="/admin/unapproved/" component={Unapproved}/>
+				{/* <Route path="/dashboard/" component={}></Route> */}
+			</BrowserRouter>
+		</Container>
+	);
 }
 
 export default App;

@@ -1,0 +1,31 @@
+#ddbutton
+  display: flex
+  flex-direction: row
+  width: 170px
+  justify-content: space-between
+
+#stats
+  width: 50%
+
+@media screen and ( max-width: 900px )
+  #stats
+  width: 100%
+
+  #ddbutton
+    width: fit-content
+
+@media screen and ( max-width: 675px )
+  #stats
+    width: 100%
+  #ddbutton
+    width: fit-content
+  #banerText
+    display: none
+
+@media screen and ( max-width: 380px )
+  #stats
+    width: 100%
+  #ddbutton
+    width: fit-content
+  #banerText
+    display: none
