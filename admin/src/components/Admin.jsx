@@ -12,6 +12,7 @@ function DropDownButtons(props) {
 			<DropdownButton as={ButtonGroup} title="Goto" id="bg-nested-dropdown">
 				<Dropdown.Item onClick={()=>props.call("1")}>Dashboard</Dropdown.Item>
 				<Dropdown.Item onClick={()=>props.call("2")}>Unapproved answers</Dropdown.Item>
+				<Dropdown.Item onClick={()=>props.call("3")}>Unapproved requests</Dropdown.Item>
 			</DropdownButton>
 		</ButtonGroup>
 	);
@@ -33,6 +34,10 @@ export default class Admin extends React.Component {
     
       case "2":
         this.props.history.push("/admin/unapproved")
+				break;
+			
+      case "3":
+        this.props.history.push("/admin/requests")
         break;
   
       default:
@@ -42,7 +47,7 @@ export default class Admin extends React.Component {
 	render() {
 		return (
 			<Fragment>
-				<Navbar className="justify-content-sm-between bg-dark text-white">
+				<Navbar sticky="top" className="justify-content-sm-between bg-dark text-white">
           <Navbar.Brand onClick={()=>this.handlePush("1")}>
 						<img
 							alt=""
