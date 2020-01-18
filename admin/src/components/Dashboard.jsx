@@ -7,8 +7,11 @@ import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 import "react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
+import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
+import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
 import adminService from "../services/adminServices";
 const aServe = new adminService();
+const { SearchBar } = Search;
 // const [key, setKey] = useState("advance");
 
 function ControlledTabs(props) {
@@ -19,8 +22,8 @@ function ControlledTabs(props) {
 	// var count = 1;
 	const rowStyle = (row, rowIndex) => {
 		return {
-			backgroundColor: "#343a40",
-			color: "white"
+			backgroundColor: "#fff",
+			color: "#343a40"
 		};
 	};
 	const columns = [
@@ -45,26 +48,52 @@ function ControlledTabs(props) {
 			activeKey={key}
 			onSelect={k => setKey(k)}
 			style={{ padding: "8px" }}
-			className="bg-secondary"
+			className="bg-dark"
 		>
 			<Tab eventKey="advance" title="Advance" style={{ padding: "8px" }}>
-				<BootstrapTable
-					responsive
-					striped
-					bordered={false}
-					hover
-					condensed
-					variant="dark"
-					className="mt-sm-2"
-					bootstrap4
+				<ToolkitProvider
 					keyField="id"
 					data={products}
 					columns={columns}
-					pagination={paginationFactory()}
-					rowStyle={rowStyle}
-				/>
+					search
+				>
+					{props => (
+						<div>
+							<h5>you can use the below box to perform search:</h5>
+							<SearchBar {...props.searchProps} />
+							<hr />
+							<BootstrapTable
+								responsive
+								striped
+								bordered={false}
+								hover
+								condensed
+								variant="light"
+								className="mt-sm-2"
+								bootstrap4
+								keyField="id"
+								data={products}
+								columns={columns}
+								pagination={paginationFactory()}
+								{ ...props.baseProps } 
+								// rowStyle={rowStyle}
+							/>
+						</div>
+					)}
+				</ToolkitProvider>
 			</Tab>
 			<Tab eventKey="basic" title="Basic" style={{ padding: "8px" }}>
+			<ToolkitProvider
+					keyField="id"
+					data={products}
+					columns={columns}
+					search
+				>
+					{props => (
+						<div>
+							<h5>you can use the below box to perform search:</h5>
+							<SearchBar {...props.searchProps} />
+							<hr />
 				<BootstrapTable
 					responsive
 					striped
@@ -78,8 +107,12 @@ function ControlledTabs(props) {
 					data={products1}
 					columns={columns}
 					pagination={paginationFactory()}
-					rowStyle={rowStyle}
-				/>
+					{ ...props.baseProps } 
+								// rowStyle={rowStyle}
+							/>
+						</div>
+					)}
+				</ToolkitProvider>
 			</Tab>
 		</Tabs>
 	);
@@ -150,7 +183,7 @@ export default class Dashboard extends React.Component {
 				<Container fluid className="d-flex flex-row justify-content-center">
 					<Card
 						id="stats"
-						className="m-sm-2 d-flex flex-row  justify-content-around bg-dark text-light"
+						className="m-sm-2 d-flex flex-row justify-content-around bg-dark text-light shadow"
 					>
 						<Card.Body className="text-sm-center">
 							<Card.Title>Advance Users</Card.Title>

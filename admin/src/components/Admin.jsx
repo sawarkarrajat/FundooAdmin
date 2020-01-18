@@ -47,7 +47,7 @@ export default class Admin extends React.Component {
 	render() {
 		return (
 			<Fragment>
-				<Navbar sticky="top" className="justify-content-sm-between bg-dark text-white">
+				<Navbar sticky="top" className="justify-content-sm-between bg-dark text-white shadow">
           <Navbar.Brand onClick={()=>this.handlePush("1")}>
 						<img
 							alt=""

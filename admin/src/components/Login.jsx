@@ -97,6 +97,7 @@ class Login extends React.Component {
 										aria-label="password"
 										aria-describedby="basic-addon1"
 										onChange={e => this.handleChange(e)}
+										onKeyDown={this.hitApi}
 									/>
 								</InputGroup>
 
